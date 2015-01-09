@@ -9,6 +9,13 @@ $ npm install gitbook-plugin-jsfiddle --save
 ```
 {
     "plugins": [ "jsfiddle"]
+    "pluginsConfig": {
+          "jsfiddle":{
+            "tabs":["result","js","css", "html"],
+            "height":500,
+            "widht":500
+          }
+    }
 }
 ```
 ### 3. paste jsfiddle embedded code to you book something like

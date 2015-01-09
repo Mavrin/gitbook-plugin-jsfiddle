@@ -1,5 +1,6 @@
 require(["gitbook", "jquery"], function (gitbook, $) {
-    var matcher = /(http|https):\/\/jsfiddle.net\/.+/;
+    var matcher;
+    var localConfig = {jsfiddle:{}};
 
     function getQuery(querystring) {
         var query = {};
@@ -27,21 +28,25 @@ require(["gitbook", "jquery"], function (gitbook, $) {
         return query;
     }
 
-    function embed(link) {
+    // <iframe width="100%" height="300" src="http://jsfiddle.net/taucharts/hmvwg1mn/embedded/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+    function embed(link, config) {
         var iframe = document.createElement('iframe'),
-            url = link.href;
+            url = link.href.replace(/\?.+/, '') + 'embedded/' + config.tabs.join(',') + '/';
+
         iframe.src = url;
+        var $frame = $(iframe);
+        $frame.attr('allowfullscreen', 'allowfullscreen');
+        $frame.attr('frameborder', 0);
         iframe._src = url; // support for google slide embed
         iframe.className = link.className; // inherit all the classes from the link
         iframe.id = link.id; // also inherit, giving more style control to the user
         iframe.style.border = '1px solid #aaa';
 
         var query = getQuery(link.search);
-        iframe.style.width = query.width || '100%';
-        iframe.style.minHeight = query.height || '300px';
-        if (query.height) {
-            iframe.style.maxHeight = query.height;
-        }
+        var widht = query.width || config.width || '100%';
+        var height = query.height || config.height || '100%';
+        $frame.attr('width', widht);
+        $frame.attr('height', height);
         link.parentNode.replaceChild(iframe, link);
 
         var onmessage = function (event) {
@@ -57,19 +62,24 @@ require(["gitbook", "jquery"], function (gitbook, $) {
         }
     }
 
-    function embedAllLink() {
+    function embedAllLink(config) {
+        localConfig.jsfiddle = config.jsfiddle || {};
+        localConfig.tabs = config.tabs || ['result'];
         $(".book-body a").each(function (index, link) {
             if (link.href && matcher.test(link.href)) {
-                embed(link);
+                embed(link, localConfig.jsfiddle);
             }
         });
     }
 
     gitbook.events.bind("start", function (e, config) {
-        embedAllLink();
+        matcher = /(http|https):\/\/jsfiddle.net\/.+/;
+        embedAllLink(config);
     });
 
     gitbook.events.bind("page.change", function () {
-        embedAllLink();
+        if (matcher) {
+            embedAllLink(localConfig);
+        }
     });
 });
