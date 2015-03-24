@@ -8,7 +8,7 @@ $ npm install gitbook-plugin-jsfiddle --save
 ### 2. add the plugin to `book.json` config
 ```
 {
-    "plugins": [ "jsfiddle"]
+    "plugins": [ "jsfiddle"],
     "pluginsConfig": {
           "jsfiddle":{
             "tabs":["result","js","css", "html"],
