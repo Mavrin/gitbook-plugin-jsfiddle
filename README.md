@@ -19,7 +19,7 @@ $ npm install gitbook-plugin-jsfiddle --save
 }
 ```
 ### 3. paste jsfiddle embedded code to you book something like
-`[source code](http://jsfiddle.net/zalun/NmudS/embedded/result,js,html,css/)`
+`[source code](http://jsfiddle.net/zalun/NmudS/)`
 
 will be rendered like [my book](http://api.taucharts.com/tutorials/1min.html) does
 
