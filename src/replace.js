@@ -98,7 +98,7 @@ createScriptNode = function (href, config) {
     });
     var parser = new htmlparser.Parser(handler);
     var tabs = ["result","js","css", "html"];
-    parser.write('<script async src="' + href + 'embed/' + tabs.join(',') + '/dark/" ><script>');
+    parser.write('<script async src="' + href + 'embed/' + tabs.join(',') + '/dark/" ></script>');
     parser.done();
     return contentDOM[0];
 };
@@ -120,6 +120,5 @@ module.exports = function (rawHtml, config) {
     links.forEach(function (link) {
         domutils.replaceElement(link, createScriptNode(link.attribs.href))
     });
-    console.log(domutils.getOuterHTML(contentDOM));
     return domutils.getOuterHTML(contentDOM);
 };
