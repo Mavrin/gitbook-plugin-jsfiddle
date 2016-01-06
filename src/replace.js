@@ -87,9 +87,24 @@ var htmlparser = require('htmlparser2');
 var DomHandler = require('domhandler');
 var domutils = require('domutils');
 var matcher = /\/\/jsfiddle.net\/.+/;
-module.exports = function (content, config) {
-    var contentDOM;
-    var rawHtml = "<div><a href='https://jsfiddle.net/fdsa'>Yellow</div>";
+
+createScriptNode = function (href, config) {
+    var contentDOM = [];
+    var handler = new DomHandler(function (error, dom) {
+        if (error)
+            console.log(error);
+        else
+            contentDOM = dom;
+    });
+    var parser = new htmlparser.Parser(handler);
+    var tabs = ["result","js","css", "html"];
+    parser.write('<script async src="' + href + 'embed/' + tabs.join(',') + '/dark/" ><script>');
+    parser.done();
+    return contentDOM[0];
+};
+
+module.exports = function (rawHtml, config) {
+    var contentDOM = [];
     var handler = new DomHandler(function (error, dom) {
         if (error)
             console.log(error);
@@ -102,6 +117,9 @@ module.exports = function (content, config) {
     var links = domutils.find(function (element) {
         return element.attribs && element.attribs.href && matcher.test(element.attribs.href);
     }, contentDOM, true);
-    console.log(links);
-    return '';
+    links.forEach(function (link) {
+        domutils.replaceElement(link, createScriptNode(link.attribs.href))
+    });
+    console.log(domutils.getOuterHTML(contentDOM));
+    return domutils.getOuterHTML(contentDOM);
 };

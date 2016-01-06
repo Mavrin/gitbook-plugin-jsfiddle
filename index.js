@@ -1,3 +1,4 @@
+var replace = require('./src/replace');
 module.exports = {
     /*book: {
         assets: "./book",
@@ -7,8 +8,7 @@ module.exports = {
     },*/
     hooks: {
         'page': function(page) {
-            debugger;
-           console.log(arguments, this);
+            page.sections[0].content = replace(page.sections[0].content);
             return page;
         }
     }
