@@ -1,25 +1,37 @@
 {
-    "name": "gitbook-plugin-jsfiddle",
-    "description": "JSFiddle Integration into GitBook",
-    "main": "index.js",
-    "version": "0.0.2",
-    "author": {
-        "name": "Konstantin Krivlenia"
-    },
-    "keywords": [
-        "gitbook",
-        "jsfiddle"
-    ],
-    "engines": {
-        "gitbook": "*"
-    },
-    "homepage": "https://github.com/Mavrin/gitbook-plugin-jsfiddle",
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/Mavrin/gitbook-plugin-jsfiddle.git"
-    },
-    "license": "MIT",
-    "bugs": {
-        "url": "https://github.com/Mavrin/gitbook-plugin-jsfiddle/issues"
-    }
+  "name": "gitbook-plugin-jsfiddle",
+  "description": "JSFiddle Integration into GitBook",
+  "main": "index.js",
+  "version": "0.0.2",
+  "author": {
+    "name": "Konstantin Krivlenia"
+  },
+  "keywords": [
+    "gitbook",
+    "jsfiddle"
+  ],
+  "engines": {
+    "gitbook": "*"
+  },
+  "homepage": "https://github.com/Mavrin/gitbook-plugin-jsfiddle",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Mavrin/gitbook-plugin-jsfiddle.git"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Mavrin/gitbook-plugin-jsfiddle/issues"
+  },
+  "dependencies": {
+    "domhandler": "^2.3.0",
+    "domutils": "^1.5.1",
+    "htmlparser2": "^3.9.0"
+  },
+  "scripts": {
+    "test": "node test/scan.js"
+  },
+  "devDependencies": {
+    "domhandler": "^2.3.0",
+    "tape": "^4.4.0"
+  }
 }
