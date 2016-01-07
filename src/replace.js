@@ -87,38 +87,67 @@ var htmlparser = require('htmlparser2');
 var DomHandler = require('domhandler');
 var domutils = require('domutils');
 var matcher = /\/\/jsfiddle.net\/.+/;
+var _ = require('lodash');
 
-createScriptNode = function (href, config) {
+var defautsConfig = {
+    type: 'script',
+    tabs: ['js', 'html', 'css', 'result'],
+    theme: 'light'
+};
+
+var htmlToDom = function (html) {
     var contentDOM = [];
     var handler = new DomHandler(function (error, dom) {
-        if (error)
+        if (error) {
             console.log(error);
-        else
+        } else {
             contentDOM = dom;
+        }
     });
     var parser = new htmlparser.Parser(handler);
-    var tabs = ["js","css", "html","result"];
-    parser.write('<script async src="' + href + 'embed/' + tabs.join(',') + '/dark/" ></script>');
+    parser.write(html);
     parser.done();
-    return contentDOM[0];
+    return contentDOM
+};
+
+var exctractConfigFromURL = function (href) {
+    return {};
+};
+var generateAdditionalParams = function (config) {
+    var params = '/';
+    if (config.theme) {
+        params += config.theme + '/';
+    }
+    var colors = _.chain(config).omit('href', 'type', 'theme', 'tabs').reduce(function (colors, value, color) {
+        colors += color + '=' + value + '&';
+        return colors;
+    }, '');
+    return params + '?' + colors;
+};
+
+var creator = {
+    script: function (config) {
+        var additionalParam = generateAdditionalParams(config);
+        return '<script async src="' + config.href + 'embed/' + config.tabs.join(',') + additionalParam + '" ></script>';
+    },
+    frame: function (config) {
+
+    }
+};
+
+var createEmbedNode = function (href, config) {
+    var type = config.type || 'script';
+
+    return htmlToDom(creator[type](_.defaults({href: href}, config, defautsConfig)))[0];
 };
 
 module.exports = function (rawHtml, config) {
-    var contentDOM = [];
-    var handler = new DomHandler(function (error, dom) {
-        if (error)
-            console.log(error);
-        else
-            contentDOM = dom;
-    });
-    var parser = new htmlparser.Parser(handler);
-    parser.write(rawHtml);
-    parser.done();
+    var contentDOM = htmlToDom(rawHtml);
     var links = domutils.find(function (element) {
         return element.attribs && element.attribs.href && matcher.test(element.attribs.href);
     }, contentDOM, true);
     links.forEach(function (link) {
-        domutils.replaceElement(link, createScriptNode(link.attribs.href))
+        domutils.replaceElement(link, createEmbedNode(link.attribs.href, config))
     });
     return domutils.getOuterHTML(contentDOM);
 };

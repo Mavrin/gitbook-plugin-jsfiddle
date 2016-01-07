@@ -25,7 +25,8 @@
   "dependencies": {
     "domhandler": "^2.3.0",
     "domutils": "^1.5.1",
-    "htmlparser2": "^3.9.0"
+    "htmlparser2": "^3.9.0",
+    "lodash": "^3.10.1"
   },
   "scripts": {
     "test": "node tests/replace.js"
