@@ -98,7 +98,7 @@ createScriptNode = function (href, config) {
     });
     var parser = new htmlparser.Parser(handler);
     var tabs = ["js","css", "html","result"];
-    parser.write('<p><script async src="' + href + 'embed/' + tabs.join(',') + '/dark/" ></script></p>');
+    parser.write('<script async src="' + href + 'embed/' + tabs.join(',') + '/dark/" ></script>');
     parser.done();
     return contentDOM[0];
 };
