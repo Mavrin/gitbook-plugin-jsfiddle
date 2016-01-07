@@ -2,7 +2,7 @@
   "name": "gitbook-plugin-jsfiddle",
   "description": "JSFiddle Integration into GitBook",
   "main": "index.js",
-  "version": "0.0.2",
+  "version": "1.0.0-alpha.1",
   "author": {
     "name": "Konstantin Krivlenia"
   },
@@ -28,10 +28,9 @@
     "htmlparser2": "^3.9.0"
   },
   "scripts": {
-    "test": "node test/scan.js"
+    "test": "node tests/replace.js"
   },
   "devDependencies": {
-    "domhandler": "^2.3.0",
     "tape": "^4.4.0"
   }
 }
