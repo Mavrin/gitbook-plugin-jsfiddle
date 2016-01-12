@@ -36,8 +36,21 @@ test('replacer', function (assert) {
             tabs: ['js', 'result']
         }),
         `<div>
-          <iframe width="100%" height="100%" src="//jsfiddle.net/zalun/NmudS/embedded/js,result/dark/?bodyColor=red&accentColor=red" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+          <iframe width="100%" height="300px" src="//jsfiddle.net/zalun/NmudS/embedded/js,result/dark/?bodyColor=red&accentColor=red" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
         </div>`.replace(/\s+/g, ' ')
         , 'replace on frame with params and dark theme');
+    assert.equal(
+        replace(
+            '<div><a href="https://jsfiddle.net/09bv780j/#tabs=result,css&width=500px&type=script&theme=dark&bodyColor=blue"></a></div>',
+            {
+                bodyColor:'red',
+                type:'frame',
+                accentColor: 'red',
+                tabs:['js']
+            }
+        ),
+        '<div><script async src="https://jsfiddle.net/09bv780j/embed/result,css/dark/?bodyColor=blue&accentColor=red"></script></div>',
+        'support inline config'
+    );
     assert.end();
 });

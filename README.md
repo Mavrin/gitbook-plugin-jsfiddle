@@ -13,15 +13,21 @@ $ npm install gitbook-plugin-jsfiddle --save
     "plugins": [ "jsfiddle"],
     "pluginsConfig": {
           "jsfiddle":{
+            "type":"script"
             "tabs":["result","js","css", "html"],
-            "height":500,
-            "widht":500
+            "height": "500px",
+            "widht": "500px",
+            "fontColor": "green"
           }
     }
 }
 ```
+Param `type` can be 'frame' or 'script'.
+Also you can use other params read more https://medium.com/jsfiddle-updates/new-jsfiddle-embeds-93ab7a51ee11#.vt34bxchv
+If you need override setting for certain fiddle,you can just add this param in hash
+`//jsfiddle.net/zalun/NmudS/#fontColor=green&type=frame`
 ### 3. paste jsfiddle embedded code to you book something like
-`[source code](http://jsfiddle.net/zalun/NmudS/)`
+`[source code](//jsfiddle.net/zalun/NmudS/)`
 
-will be rendered like [my book](http://api.taucharts.com/tutorials/1min.html) does
+will be rendered like [my book](https://api.taucharts.com/tutorials/1min.html) does
 

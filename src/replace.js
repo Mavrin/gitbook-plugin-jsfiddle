@@ -25,7 +25,19 @@ var htmlToDom = function (html) {
     return contentDOM
 };
 
-var exctractConfigFromURL = function (href) {
+
+var extractConfigFromURL = function (href) {
+    var match = /(#)(.+)$/ig.exec(href);
+    if (match && match[2]) {
+        return match[2].split('&').reduce(function (params, param) {
+            var splitParam = param.split('=');
+            if (splitParam[0] === 'tabs') {
+                splitParam[1] = splitParam[1].split(',');
+            }
+            params[splitParam[0]] = splitParam[1];
+            return params;
+        }, {});
+    }
     return {};
 };
 var generateAdditionalParams = function (config) {
@@ -55,9 +67,9 @@ var creator = {
         return [
             '<iframe',
             ' width=',
-            '"' + (config.width ? config.width + 'px' : '100%') + '"',
+            '"' + (config.width ? config.width : '100%') + '"',
             ' height=',
-            '"' + (config.height ? config.height + 'px' : '100%') + '"',
+            '"' + (config.height ? config.height : '300px') + '"',
             ' src="' + generateUrl(config) + '"',
             ' allowfullscreen="allowfullscreen" frameborder="0"',
             '>',
@@ -67,9 +79,10 @@ var creator = {
 };
 
 var createEmbedNode = function (href, config) {
-    var type = config.type || 'script';
-
-    return htmlToDom(creator[type](_.defaults({href: href}, config, defautsConfig)))[0];
+    var normalURL = href.replace(/#.+$/, '');
+    var configFromUrl = extractConfigFromURL(href);
+    var mergedConfig = _.defaults({href: normalURL}, configFromUrl, config, defautsConfig);
+    return htmlToDom(creator[mergedConfig.type](mergedConfig))[0];
 };
 
 module.exports = function (rawHtml, config) {
