@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/Mavrin/gitbook-plugin-jsfiddle.svg)](https://travis-ci.org/Mavrin/gitbook-plugin-jsfiddle)
+
 JSFiddle integration for GitBook
 ==============
 
