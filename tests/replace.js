@@ -19,6 +19,16 @@ test('replacer', function (assert) {
     assert.equal(
         replace(str, {
             type: 'script',
+            theme: "dark",
+            tabs: ['js']
+        }),
+        `<div>
+          <script async src="//jsfiddle.net/zalun/NmudS/embed/js/dark/"></script>
+        </div>`.replace(/\s+/g, ' ')
+        , 'replace on script without colors params and dark theme');
+    assert.equal(
+        replace(str, {
+            type: 'script',
             bodyColor: "red",
             accentColor: "red",
             tabs: ['js']

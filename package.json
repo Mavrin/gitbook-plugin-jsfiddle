@@ -2,7 +2,7 @@
   "name": "gitbook-plugin-jsfiddle",
   "description": "JSFiddle Integration into GitBook",
   "main": "index.js",
-  "version": "1.0.0-alpha.6",
+  "version": "1.0.0-alpha.7",
   "author": {
     "name": "Konstantin Krivlenia"
   },

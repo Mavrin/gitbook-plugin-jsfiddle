@@ -45,10 +45,10 @@ var generateAdditionalParams = function (config) {
     if (config.theme) {
         params += config.theme + '/';
     }
-    var colors = _.chain(config).omit('href', 'type', 'theme', 'tabs', 'width', 'height').reduce(function (colors, value, color) {
+    var colors = _.chain(config).omit(['href', 'type', 'theme', 'tabs', 'width', 'height']).reduce(function (colors, value, color) {
         colors += color + '=' + value + '&';
         return colors;
-    }, '');
+    }, '').value();
     colors = colors.replace(/&$/, '');
     if (colors) {
         return params + '?' + colors;
