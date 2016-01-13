@@ -27,11 +27,9 @@ require(["gitbook", "jquery"], function (gitbook, $) {
             params += config.theme + '/';
         }
         var colors = Object.keys(config).reduce(function (colors, key) {
-
             if (['href', 'type', 'theme', 'tabs', 'width', 'height'].indexOf(key) !== -1) {
                 return colors;
             }
-
             colors += key + '=' + config[key] + '&';
             return colors;
         }, '');
@@ -45,7 +43,6 @@ require(["gitbook", "jquery"], function (gitbook, $) {
 
     var generateUrl = function (config) {
         var additionalParam = generateAdditionalParams(config);
-        console.log(additionalParam);
         var type = config.type == 'frame' ? 'embedded' : 'embed';
         return config.href + type + '/' + config.tabs.join(',') + additionalParam;
     };
@@ -81,7 +78,6 @@ require(["gitbook", "jquery"], function (gitbook, $) {
 
     function embedAllLink(config) {
         localConfig.jsfiddle = $.extend(localConfig.jsfiddle || {}, config.jsfiddle);
-
         $(".book-body a").each(function (index, link) {
             if (link.href && matcher.test(link.href)) {
                 link.parentNode.insertBefore(createEmbedNode(link.href, localConfig.jsfiddle), link.nextSibling);
