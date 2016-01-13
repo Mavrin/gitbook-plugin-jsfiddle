@@ -4,7 +4,7 @@ var domutils = require('domutils');
 var matcher = /\/\/jsfiddle.net\/.+/;
 var _ = require('lodash');
 
-var defautsConfig = {
+var defaultsConfig = {
     type: 'script',
     tabs: ['js', 'html', 'css', 'result'],
     theme: 'light'
@@ -84,7 +84,7 @@ var creator = {
 var createEmbedNode = function (href, config) {
     var normalURL = href.replace(/#.+$/, '');
     var configFromUrl = extractConfigFromURL(href);
-    var mergedConfig = _.defaults({href: normalURL}, configFromUrl, config, defautsConfig);
+    var mergedConfig = _.defaults({href: normalURL}, configFromUrl, config, defaultsConfig);
     return htmlToDom(creator[mergedConfig.type](mergedConfig))[0];
 };
 
