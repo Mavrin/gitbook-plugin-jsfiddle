@@ -16,7 +16,7 @@ $ npm install gitbook-plugin-jsfiddle --save
             "type":"script"
             "tabs":["result","js","css", "html"],
             "height": "500",
-            "widht": "500",
+            "width": "500",
             "fontColor": "00FF00"
           }
     }
