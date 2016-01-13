@@ -15,9 +15,9 @@ $ npm install gitbook-plugin-jsfiddle --save
           "jsfiddle":{
             "type":"script"
             "tabs":["result","js","css", "html"],
-            "height": "500px",
-            "widht": "500px",
-            "fontColor": "green"
+            "height": "500",
+            "widht": "500",
+            "fontColor": "00FF00"
           }
     }
 }
@@ -30,4 +30,5 @@ If you need override setting for certain fiddle,you can just add this param in h
 `[source code](//jsfiddle.net/zalun/NmudS/)`
 
 will be rendered like [my book](https://api.taucharts.com/tutorials/1min.html) does
+Also you can see simple example in https://github.com/Mavrin/gitbook-example
 
