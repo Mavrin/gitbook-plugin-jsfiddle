@@ -29,7 +29,7 @@ var htmlToDom = function (html) {
 var extractConfigFromURL = function (href) {
     var match = /(#)(.+)$/ig.exec(href);
     if (match && match[2]) {
-        return match[2].split('&').reduce(function (params, param) {
+        return match[2].split('&amp;').reduce(function (params, param) {
             var splitParam = param.split('=');
             if (splitParam[0] === 'tabs') {
                 splitParam[1] = splitParam[1].split(',');
@@ -50,7 +50,10 @@ var generateAdditionalParams = function (config) {
         return colors;
     }, '');
     colors = colors.replace(/&$/, '');
-    return params + '?' + colors;
+    if (colors) {
+        return params + '?' + colors;
+    }
+    return params;
 };
 
 var generateUrl = function (config) {
@@ -69,7 +72,7 @@ var creator = {
             ' width=',
             '"' + (config.width ? config.width : '100%') + '"',
             ' height=',
-            '"' + (config.height ? config.height : '300px') + '"',
+            '"' + (config.height ? config.height : '300') + '"',
             ' src="' + generateUrl(config) + '"',
             ' allowfullscreen="allowfullscreen" frameborder="0"',
             '>',
