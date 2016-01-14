@@ -2,7 +2,7 @@
   "name": "gitbook-plugin-jsfiddle",
   "description": "JSFiddle Integration into GitBook",
   "main": "index.js",
-  "version": "1.0.0-beta.1",
+  "version": "1.0.0-beta.2",
   "author": {
     "name": "Konstantin Krivlenia"
   },
@@ -23,15 +23,22 @@
     "url": "https://github.com/Mavrin/gitbook-plugin-jsfiddle/issues"
   },
   "dependencies": {
-    "domhandler": "^2.3.0",
-    "domutils": "^1.5.1",
-    "htmlparser2": "^3.9.0",
-    "lodash": "^3.10.1"
   },
   "scripts": {
-    "test": "node tests/replace.js"
+    "test": "karma start karma.conf.js"
   },
   "devDependencies": {
+    "chai": "^3.4.1",
+    "jquery": "^2.2.0",
+    "karma": "^0.13.19",
+    "karma-chrome-launcher": "^0.2.2",
+    "karma-cli": "^0.1.2",
+    "karma-firefox-launcher": "^0.1.7",
+    "karma-mocha": "^0.2.1",
+    "karma-requirejs": "^0.2.3",
+    "karma-spec-reporter": "0.0.23",
+    "mocha": "^2.3.4",
+    "requirejs": "^2.1.22",
     "tape": "^4.4.0"
   }
 }

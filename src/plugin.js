@@ -1,11 +1,12 @@
 require(["gitbook", "jquery"], function (gitbook, $) {
     var matcher = /\/\/jsfiddle.net\/.+/;
+    var defaults = {
+        type: 'script',
+        tabs: ['js', 'html', 'css', 'result'],
+        theme: 'light'
+    };
     var localConfig = {
-        jsfiddle: {
-            type: 'script',
-            tabs: ['js', 'html', 'css', 'result'],
-            theme: 'light'
-        }
+        jsfiddle: {}
     };
     var extractConfigFromURL = function (href) {
         var match = /(#)(.+)$/ig.exec(href);
@@ -87,6 +88,7 @@ require(["gitbook", "jquery"], function (gitbook, $) {
     }
 
     gitbook.events.bind("start", function (e, config) {
+        localConfig.jsfiddle = $.extend({}, defaults);
         matcher = /(http|https):\/\/jsfiddle.net\/.+/;
         embedAllLink(config);
     });
@@ -96,4 +98,5 @@ require(["gitbook", "jquery"], function (gitbook, $) {
             embedAllLink(localConfig);
         }
     });
+
 });
