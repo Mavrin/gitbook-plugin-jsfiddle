@@ -1,25 +1,44 @@
 {
-    "name": "gitbook-plugin-jsfiddle",
-    "description": "JSFiddle Integration into GitBook",
-    "main": "index.js",
-    "version": "0.0.2",
-    "author": {
-        "name": "Konstantin Krivlenia"
-    },
-    "keywords": [
-        "gitbook",
-        "jsfiddle"
-    ],
-    "engines": {
-        "gitbook": "*"
-    },
-    "homepage": "https://github.com/Mavrin/gitbook-plugin-jsfiddle",
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/Mavrin/gitbook-plugin-jsfiddle.git"
-    },
-    "license": "MIT",
-    "bugs": {
-        "url": "https://github.com/Mavrin/gitbook-plugin-jsfiddle/issues"
-    }
+  "name": "gitbook-plugin-jsfiddle",
+  "description": "JSFiddle Integration into GitBook",
+  "main": "index.js",
+  "version": "1.0.0-beta.2",
+  "author": {
+    "name": "Konstantin Krivlenia"
+  },
+  "keywords": [
+    "gitbook",
+    "jsfiddle"
+  ],
+  "engines": {
+    "gitbook": "*"
+  },
+  "homepage": "https://github.com/Mavrin/gitbook-plugin-jsfiddle",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Mavrin/gitbook-plugin-jsfiddle.git"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Mavrin/gitbook-plugin-jsfiddle/issues"
+  },
+  "dependencies": {
+  },
+  "scripts": {
+    "test": "karma start karma.conf.js"
+  },
+  "devDependencies": {
+    "chai": "^3.4.1",
+    "jquery": "^2.2.0",
+    "karma": "^0.13.19",
+    "karma-chrome-launcher": "^0.2.2",
+    "karma-cli": "^0.1.2",
+    "karma-firefox-launcher": "^0.1.7",
+    "karma-mocha": "^0.2.1",
+    "karma-requirejs": "^0.2.3",
+    "karma-spec-reporter": "0.0.23",
+    "mocha": "^2.3.4",
+    "requirejs": "^2.1.22",
+    "tape": "^4.4.0"
+  }
 }
