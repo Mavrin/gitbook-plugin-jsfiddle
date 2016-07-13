@@ -24,7 +24,7 @@ $ npm install gitbook-plugin-jsfiddle --save
 ```
 Param `type` can be 'frame' or 'script'.
 
-Also you can use other params read more https://medium.com/jsfiddle-updates/new-jsfiddle-embeds-93ab7a51ee11#.vt34bxchv .
+Also you can use [other params](https://medium.com/jsfiddle-updates/new-jsfiddle-embeds-93ab7a51ee11#.vt34bxchv).
 
 If you need to override setting for certain fiddle, you can just add this param in hash
 `https://jsfiddle.net/4o4z6fqn/9/#fontColor=00FF00&type=frame`
