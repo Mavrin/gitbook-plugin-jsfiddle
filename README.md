@@ -13,7 +13,7 @@ $ npm install gitbook-plugin-jsfiddle --save
     "plugins": [ "jsfiddle"],
     "pluginsConfig": {
           "jsfiddle":{
-            "type":"script"
+            "type":"script",
             "tabs":["result","js","css", "html"],
             "height": "500",
             "width": "500",
