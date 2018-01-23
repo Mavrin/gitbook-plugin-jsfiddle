@@ -23,7 +23,7 @@ define(function (require) {
             });
             assert.equal(
                 $('.book-body').html(),
-                '<div> <script async="" src="http://jsfiddle.net/zalun/NmudS/embed/js/dark/?bodyColor=red&amp;accentColor=red"></script> </div>'
+                '<div> <script src="http://jsfiddle.net/zalun/NmudS/embed/js/dark/?bodyColor=red&amp;accentColor=red" async=""></script> </div>'
             );
         });
         it('replace on script without colors params and dark theme', function () {
@@ -37,7 +37,7 @@ define(function (require) {
             });
             assert.equal(
                 $('.book-body').html(),
-                '<div> <script async="" src="http://jsfiddle.net/zalun/NmudS/embed/js/dark/"></script> </div>'
+                '<div> <script src="http://jsfiddle.net/zalun/NmudS/embed/js/dark/" async=""></script> </div>'
             );
         });
         it('replace on script with params and without theme', function () {
@@ -52,7 +52,7 @@ define(function (require) {
             });
             assert.equal(
                 $('.book-body').html(),
-                '<div> <script async="" src="http://jsfiddle.net/zalun/NmudS/embed/js/light/?bodyColor=red&amp;accentColor=red"></script> </div>'
+                '<div> <script src="http://jsfiddle.net/zalun/NmudS/embed/js/light/?bodyColor=red&amp;accentColor=red" async=""></script> </div>'
             );
         });
         it('replace on frame with params and dark theme', function () {
@@ -68,7 +68,7 @@ define(function (require) {
             });
             assert.equal(
                 $('.book-body').html(),
-                '<div> <iframe src="http://jsfiddle.net/zalun/NmudS/embedded/js,result/dark/?bodyColor=red&amp;accentColor=red" allowfullscreen="allowfullscreen" frameborder="0" height="300" width="100%"></iframe> </div>'
+                '<div> <iframe src="http://jsfiddle.net/zalun/NmudS/embedded/js,result/dark/?bodyColor=red&amp;accentColor=red" allowfullscreen="allowfullscreen" width="100%" height="300" frameborder="0"></iframe> </div>'
             );
         });
         it('support inline config', function () {
@@ -83,7 +83,7 @@ define(function (require) {
             });
             assert.equal(
                 $('.book-body').html(),
-                '<div><script async="" src="https://jsfiddle.net/09bv780j/embed/result,css/dark/?bodyColor=blue&amp;accentColor=red"></script></div>'
+                '<div><script src="https://jsfiddle.net/09bv780j/embed/result,css/dark/?bodyColor=blue&amp;accentColor=red" async=""></script></div>'
             );
         });
         it('work on change event', function () {
@@ -98,7 +98,7 @@ define(function (require) {
             });
             assert.equal(
                 $('.book-body').html(),
-                '<div><script async="" src="https://jsfiddle.net/09bv780j/embed/result,css/dark/?bodyColor=blue&amp;accentColor=red"></script></div>'
+                '<div><script src="https://jsfiddle.net/09bv780j/embed/result,css/dark/?bodyColor=blue&amp;accentColor=red" async=""></script></div>'
             );
 
             $('.book-body').html('<div> <a href="//jsfiddle.net/zalun/NmudS/">Yellow</a> </div>');
@@ -112,7 +112,7 @@ define(function (require) {
             });
             assert.equal(
                 $('.book-body').html(),
-                '<div> <iframe src="http://jsfiddle.net/zalun/NmudS/embedded/js/light/?bodyColor=red&amp;accentColor=red" allowfullscreen="allowfullscreen" frameborder="0" height="300" width="100%"></iframe> </div>'
+                '<div> <iframe src="http://jsfiddle.net/zalun/NmudS/embedded/js/light/?bodyColor=red&amp;accentColor=red" allowfullscreen="allowfullscreen" width="100%" height="300" frameborder="0"></iframe> </div>'
             );
         });
     });
